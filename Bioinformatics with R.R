@@ -138,6 +138,20 @@ Results$pharmacology[Results$names == "Uche"]
 Results$biotechnology[Results$names == "Bisoye"]
 
 
+# Object Classes
+
+class(HSPs$nucleotides)
+class(HSPs$aminoAcids)
+class(HSPs$gene)
+
+x <- as.character(c(1, 4, 6, 8, 2 ,3))
+
+print(x)
+
+print(class(x))
+
+#as.character, as.numeric, as.dataframe etc
+
 
 
 
