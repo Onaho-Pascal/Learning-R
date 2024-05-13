@@ -2,7 +2,13 @@
 title: "HTML_TUTORIAL"
 author: "Pascal Onaho"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: simplex
+    highlights: espresso 
+    code_folding: hide
 ---
 
 This is a tutorial on how to use R markdown for reproducible research.
@@ -22,7 +28,7 @@ head(Toothdata)
 
 As you can see, the from running the "play" button on the code chunk, the results are printed in line of the r markdown file.
 
-```{r}
+```{r, fig.cap="fig 1: Guinea Pig Tooth Growth"}
 
 fit <- lm(len ~ dose, data = Toothdata)
 
@@ -32,6 +38,9 @@ plot(len ~ dose, data = Toothdata)
 
 abline(lm(len ~ dose, data = Toothdata))
 ```
+
+
+
 
 
 The slope of the regression line is `r b [2]`.
@@ -78,13 +87,13 @@ it's important to note here that in R markdown, indentation matters!
  >
  > --- Sam Kean
  
- ## Hyperlinks
+## Hyperlinks
  
  Hyperlinks can also be incorporated into these files. This is especially  useful in HTML files, since they are in a web browser and will redirect the reader to the material that you are interested in showing them. Here we will use the link to R markdown's homepage for this example.
  [Rmarkdown](http://rmarkdown.rstudio.com/)
  
  
- ## Formulas
+## Formulas
  
  WE can also put nice formatted  formulas into markdown using two dollar signs.
  
@@ -97,5 +106,98 @@ it's important to note here that in R markdown, indentation matters!
  $$\Theta = \begin{pmatrix}\alpha & \beta\\
  \gamma & \delta
  \end{pmatrix}$$
+ 
+# Code chunks {.tabset}
+ 
+## Code chunk options
+ There are also options for markdown file on how knitr interprets the code chunk. There are the following options:
+Eval (T or F): Whether or not to evaluate the code chunk
+
+
+```{r}
+
+print("hello world!")
+
+```
+
+
+```{r, eval = F}
+
+print("I am testing the eval function")
+
+```
+
+Echo (T or F): Whether or not to show the code for the chunk, but results will still print.
+
+```{r, echo = F, eval = F}
+
+print("I am testing the eval function")
+
+```
+
+ 
+ Cache: If enabled, the same code chunk  will not be evaluated the next time that the knitr is run. This is great for code that has long run times.
+ 
+ fig.width or fig.height: The (graphical device) size of the R plots in inches. The figures are first written to the knitr documents, then to files that are saved separately. 
+ 
+ out.width or out.height: The output size of the R plot in the R document.
+ 
+ fig.cap: the words for the figure caption.
+ 
+ 
+## Table of Contents
+ 
+  We can also add a table of contents to out HTML Document. We do this by altering the YAML code (the weird code chunk at the very top of the document.) We can add this:
+  
+title: "HTML_TUTORIAL"
+author: "Pascal Onaho"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    
+This will give us a very nice floating table of content on the right hand side of the document.
+
+## Tabs
+ 
+You can also add TABS in out report. To do this, you need to specify each section that you want to become a tab by placing "{.tabset}" after the line. Every subsequent header will be a new tab.
+
+
+## Themes
+
+You can also add themes to your HTML document that changes the highlighting colour and hyperlink colour of your HTML output. This can be nice aesthetically. To do this, you change your theme in the YAML to one of the following:
+
+Cerulean
+Journal
+Flatly
+readable
+spacelab
+untied
+cosmo
+lumen
+paper
+sand
+stone
+simplex
+yeti
+null
+    
+You can also change the colour by specifying highlight:
+default
+tango
+payment
+kate
+monochrome
+espresso
+zenburn
+haddock
+textmate
+ 
+
+## Code folding
+
+you can also use the code folding option to allow the reader toggle between displaying and hiding the code. This is done with:
+code_folding: hide
  
  
