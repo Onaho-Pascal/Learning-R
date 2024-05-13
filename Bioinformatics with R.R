@@ -153,5 +153,62 @@ print(class(x))
 #as.character, as.numeric, as.dataframe etc
 
 
+names1 <- c("Daniel", "Edison", "Oge", "Isaac", "Precious", "Lucia")
+pharmacology1 <- c(67, 81, 74, 70, 69, 81)
+biotechnology2 <- c(81, 77, 84, 68, 69, 70)
+
+results2 <-data.frame(names1, pharmacology1, biotechnology2)
+
+results2$pharmacology1[results2$names1 == "Oge"]
+
+
+# Models and Formulas
+
+dataset <- iris
+
+# this calls the first few data in the dataset. 
+#it is useful for data that is very large such as gene length of 20,000 +
+
+head(dataset)
+
+tail(dataset)
+
+# number of rows in our dataset
+nrow(dataset)
+
+# number of columns in our dataset
+
+ncol(dataset)
+
+#let's start with a simple linear model
+
+petals.lm <- lm(formula = Petal.Length ~ Petal.Width, data = dataset)
+
+petals.lm
+
+summary(petals.lm)
+# Charts and Graphs
+
+names(iris)
+
+hist(iris$Sepal.Length)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
