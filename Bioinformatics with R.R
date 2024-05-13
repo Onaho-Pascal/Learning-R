@@ -195,8 +195,24 @@ hist(iris$Sepal.Length)
 
 
 
+# let's increase the number of bins in the histogram
 
+hist(iris$Sepal.Length, breaks = 25)
 
+# let's add some more labels
+
+hist(iris$Sepal.Length, breaks = 25, xlab = "Sepal length", main = "Sepal length frequency")
+
+# let's create a plot
+plot(iris$Sepal.Length ~ iris$Sepal.Width, xlab = "Sepal Length", ylab = "Sepal Width")
+
+# let's call on the package lattice
+library(lattice)
+
+#let's use the lattice dataplot
+dotplot(Sepal.Width ~ Sepal.Length | Species, data = iris)
+
+dotplot(Petal.Length ~ Petal.Width|Species, data = dataset)
 
 
 
