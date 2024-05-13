@@ -1,0 +1,101 @@
+---
+title: "HTML_TUTORIAL"
+author: "Pascal Onaho"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+This is a tutorial on how to use R markdown for reproducible research.
+
+Here we can type long passages or descriptions of our data without the need of "hashing" out our comments with the hashtag symbol. In out first example, we will be using the Toothgrowth dataset. In this experiment, Guinea pigs (literal) were given different amount of vitamin C to see the effects on the animal's tooth growth.
+
+To run code in a markdown file, we need to denote the section that is considered R code. We call these "code chunks".
+
+Below is a code chunk:
+
+```{r}
+Toothdata <- ToothGrowth
+
+head(Toothdata)
+
+```
+
+As you can see, the from running the "play" button on the code chunk, the results are printed in line of the r markdown file.
+
+```{r}
+
+fit <- lm(len ~ dose, data = Toothdata)
+
+b <- fit$coefficients
+
+plot(len ~ dose, data = Toothdata)
+
+abline(lm(len ~ dose, data = Toothdata))
+```
+
+
+The slope of the regression line is `r b [2]`.
+
+# Section Headers
+
+WE can also put sections and subsections in our R markdown file, similar to numbers or bulletpoints in a  word document. This is done with the "#" that we previously used to denote text in an r script.
+
+# First level header
+
+## Second Level header
+
+### Third level header
+
+
+Make sure that you a space after the hashtag, otherwise it won't work
+
+We can also add bullet point-type marks in our r markdown file.
+
+- one item
+- one item
+- One item    
+  - one more item
+  - one more item
+  - one more item
+    - one last item
+    
+it's important to note here that in R markdown, indentation matters!
+
+1. First item
+2. Second item
+3. Third item
+  - Subitem 1
+  - Subitem 2
+  - Subitem 3
+
+
+## Block Quotes
+ 
+ We can put really nice quotes into the markdown document. We do this by using the ">" symbol.
+ 
+ 
+ > "Genes are like the story, and DNA is the langauge that the story is written in."
+ >
+ > --- Sam Kean
+ 
+ ## Hyperlinks
+ 
+ Hyperlinks can also be incorporated into these files. This is especially  useful in HTML files, since they are in a web browser and will redirect the reader to the material that you are interested in showing them. Here we will use the link to R markdown's homepage for this example.
+ [Rmarkdown](http://rmarkdown.rstudio.com/)
+ 
+ 
+ ## Formulas
+ 
+ WE can also put nice formatted  formulas into markdown using two dollar signs.
+ 
+ Hard-Weinberg Formula
+ 
+ $$p^2 + 2pq + q^2 =1$$
+ 
+ And you can get really complex as well!
+ 
+ $$\Theta = \begin{pmatrix}\alpha & \beta\\
+ \gamma & \delta
+ \end{pmatrix}$$
+ 
+ 
