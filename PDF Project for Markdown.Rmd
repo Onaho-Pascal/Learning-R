@@ -1,15 +1,10 @@
 ---
-title: "HTML_TUTORIAL"
+title: "PDF Project"
 author: "Pascal Onaho"
 date: "`r Sys.Date()`"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    theme: simplex
-    highlights: espresso 
-    code_folding: hide
+output: pdf_document
 ---
+
 
 This is a tutorial on how to use R markdown for reproducible research.
 
