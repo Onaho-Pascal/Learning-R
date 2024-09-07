@@ -48,4 +48,24 @@ print(name)
 
 non_jan_flighs <- filter(my_data, month != 1)
 
+##############################
+# Arrange
+##############################
 
+# Arrange allows us to arrange the data set based on the variables we desire.
+
+arrange(my_data, year, day, month)
+descending <- arrange(my_data, desc(year), desc(day), desc(month))
+print(descending)
+
+
+# Missing values will always be placed at the end of the dataframe regardless of ascending or descending.
+
+###################
+# Select
+##################
+
+# WE can also select specific columns that we want to look at.
+
+calendar <- select(my_data, year, month, day)
+print(calendar)
