@@ -59,7 +59,8 @@ descending <- arrange(my_data, desc(year), desc(day), desc(month))
 print(descending)
 
 
-# Missing values will always be placed at the end of the dataframe regardless of ascending or descending.
+# Missing values will always be placed at the end of the dataframe 
+# regardless of ascending or descending.
 
 ###################
 # Select
