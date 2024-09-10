@@ -39,3 +39,10 @@ filtered_data <- final_data[row_means > quantile_threshold, ]
 install.packages("pheatmap")
 install.packages("RColorBrewer")
 install.packages("ComplexHeatmap")
+library(pheatmap)
+library(RColorBrewer)
+data_matrix <- as.matrix(filtered_data)
+pheatmap(data_matrix, 
+         color = colorRampPalette(rev(brewer.pal(9, "Blues"))(100), scale = "row",clustering_distance_rows = "euclidean", 
+         clustering_distance_cols = "euclidean",
+         clustering_method = "complete"))
