@@ -42,7 +42,18 @@ install.packages("ComplexHeatmap")
 library(pheatmap)
 library(RColorBrewer)
 data_matrix <- as.matrix(filtered_data)
-pheatmap(data_matrix, 
-         color = colorRampPalette(rev(brewer.pal(9, "Blues"))(100), scale = "row",clustering_distance_rows = "euclidean", 
-         clustering_distance_cols = "euclidean",
-         clustering_method = "complete"))
+install.packages("gplots")
+library(gplots)
+seq_color_palette <- colorRampPalette(c("blue", "white", "red"))(100)
+str(filtered_data)
+heatmap.2(as.matrix(filtered_data),
+          col = seq_color_palette,
+          Rowv = F, Colv = F, dendrogram = "none",
+          sepcolor = "black",
+          trace = "none",
+          key = T,
+          key.title = "Expression",
+          density.info = "none",
+          main =  "Heatmap of top 500+ differentially expressed genes
+          in glioblastoma",
+          cexRow = 0.9, cexCol = 0.7, margins = c(10,10))
