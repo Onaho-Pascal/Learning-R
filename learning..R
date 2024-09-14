@@ -21,3 +21,8 @@ x
 #attr(x, "game") = 11
 #print(x)
 methods("mean")
+
+#The Poisson distribution is a good model for rare events such as mutations. 
+dpois(x = 3, lambda = 5)
+dpois(0:12, 5)
+barplot(dpois(x = 0:12, lambda = 5), names.arg = 0:12, col = "red")
