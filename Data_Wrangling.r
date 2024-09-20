@@ -70,3 +70,12 @@ print(descending)
 
 calendar <- select(my_data, year, month, day)
 print(calendar)
+
+
+james = list(4, 5, 12, 30)
+peter = list(8, 10, 24, 60)
+dim(james) = c(2, 2)
+james
+john = list(james, peter)
+#dim(john) = c(2, 1)
+john
