@@ -10,6 +10,7 @@ setwd("C:/Users/user/Documents/Hackbio Internship Materials/Task 3")
 library(caret)
 library(DALEX)
 library(pROC)
+library(DALEXtra)
 set.seed(42)
 
 # Load the main and meta data
@@ -148,22 +149,30 @@ levels(testPred_carcinoma) <- levels(test_carcinoma$gender)
 confusionMatrix(trainPred_carcinoma, train_carcinoma$gender)
 confusionMatrix(testPred_carcinoma, test_carcinoma$gender)
 
+library(caret)
+library(DALEX)
+
+
+explainer_carcinoma <- explain(
+  model = knn_carcinoma,
+  data = train_carcinoma[, -which(names(train_carcinoma) == "gender")], # Exclude gender column
+  y = as.numeric(train_carcinoma$gender),
+  label = "knn",
+  type = "classification"  # Specify the model type
+)
 
 
 #determine the variable importance
+explainer_carcinoma <- explain(fitted_model, 
+                               label = "knn",
+                               data = train_carcinoma,
+                               y = as.numeric(train_carcinoma$gender))
 
 explainer_carcinoma <- explain(knn_carcinoma, 
                                label = "knn",
                                data = train_carcinoma,
                                y = as.numeric(train_carcinoma$gender))
 
-# fitted_model <- knn_carcinoma$finalModel
-
-# Now use explain on the fitted model
-#explainer_carcinoma <- explain(fitted_model, 
-                               #label = "knn",
-                               #data = train_carcinoma,
-                               #y = as.numeric(train_carcinoma$gender))
 
 importance_carcinoma <- feature_importance(explainer_carcinoma, n_sample = 40, type = "difference")
                               
