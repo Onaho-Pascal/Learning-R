@@ -22,13 +22,15 @@ install.packages("tidyr")
 library(dplyr)
 library(tidyr)
 
+saveRDS(carcinoma_data, file = "carcinoma_data.rds")
+carcinoma_data <- readRDS("carcinoma_data.rds")
 
-
-
+View(carcinoma_data)
 rownames(carcinoma_data) <- carcinoma_data$X
 carcinoma_data$X <- NULL
 
-
+ is.data.frame(carcinoma_data)
+View(carcinoma_data)
 # check for missing values and remove if any
 
 anyNA(carcinoma_meta)
