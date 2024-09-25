@@ -22,12 +22,14 @@ install.packages("tidyr")
 library(dplyr)
 library(tidyr)
 
-saveRDS(carcinoma_data, file = "carcinoma_data.rds")
-carcinoma_data <- readRDS("carcinoma_data.rds")
 
 View(carcinoma_data)
 rownames(carcinoma_data) <- carcinoma_data$X
 carcinoma_data$X <- NULL
+
+saveRDS(carcinoma_data, file = "carcinoma_data.rds")
+carcinoma_data <- readRDS("carcinoma_data.rds")
+
 
  is.data.frame(carcinoma_data)
 View(carcinoma_data)
@@ -44,10 +46,10 @@ anyNA(carcinoma_meta_clean)
 
 
 boxplot(carcinoma_data, col = "lightblue")
-log_carcinoma_data <- log2(carcinoma_data + 1)
+log_carcinoma_data <- log10(carcinoma_data + 1)
 boxplot(log_carcinoma_data, col = "lightblue")
 
-
+View(carcinoma_data)
 # correct the column names to be in tune with that of the meta data's column names
 colnames(log_carcinoma_data) <- gsub("\\.", "-", colnames(log_carcinoma_data))
 
@@ -76,7 +78,7 @@ carcinoma_meta_clean$barcode <- NULL #to remove the row name duplicate
 carcinoma_merged_data <- merge(trans_carc_data, carcinoma_meta_clean, by = "row.names") #merging of both main and meta data
 
 
-
+View(carcinoma_merged_data)
 # To remove near zero variation
 
 all_zero <- preProcess(carcinoma_merged_data, method = "nzv", uniqueCut = 15)
