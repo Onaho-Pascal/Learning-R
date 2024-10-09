@@ -38,7 +38,7 @@ scaled.data <- scale(lowgrade.data)  # Scaling the data
 
 # Perform K-Means clustering
 set.seed(123)
-kmeans_result <- kmeans(scaled.data, centers = 4, nstart = 25)
+kmeans_result <- kmeans(scaled.data, centers = 2, nstart = 25)
 
 fviz_cluster(kmeans_result, data = scaled.data)
 
@@ -70,6 +70,6 @@ Cluster.plot <- fviz_cluster(kmeans_result,
   # Add colors based on IDH status from the combined_data
   geom_point(aes(color = combined_data$IDH.status)) + 
   labs(color = "IDH Status") +  # Label for the legend
-  scale_color_manual(values = c("Mutant" = "blue", "WildType" = "red"))
+  scale_color_manual(values = c("Mutant" = "blue", "WT" = "red"))
 ggsave("cluster_plot.png", plot = Cluster.plot, width = 20, height = 15)
 print(Cluster.plot)
