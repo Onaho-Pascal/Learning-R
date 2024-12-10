@@ -31,7 +31,7 @@ seq_color_palette <- brewer.pal(9, "Blues")
 boxplot(filtered_counts, xlab = "samples", ylab = "counts", las = 2, col = "lightblue") # las = 2 is to rotate the x-axis labels 
 
 hist(filtered_counts[, "HU9"], 
-     main = "distribution of Raw Counts for Sample 1", 
+     main = "distribution of Raw Counts for Sample 9 (Normal)", 
      xlab = "counts", 
      col = "lightgreen", 
      breaks = 50)
@@ -39,7 +39,7 @@ hist(filtered_counts[, "HU9"],
 log_scd_data <- log2(filtered_counts + 1)
 boxplot(log_scd_data, xlab = "samples", ylab = "counts", las = 2, col = "lightblue") # las = 2 is to rotate the x-axis labels 
 hist(log_scd_data[, "HU9"], 
-     main = "distribution of Raw Counts for Sample 1", 
+     main = "distribution of Raw Counts for Sample 9 (Log)", 
      xlab = "counts",
      col = "lightgreen", 
      breaks = 50)
@@ -47,7 +47,7 @@ hist(log_scd_data[, "HU9"],
 z_scd_data <- t(scale(t(log_scd_data)))
 boxplot(z_scd_data, xlab = "samples", ylab = "counts", las = 2, col = "blue")
 hist(z_scd_data[, "HU9"], 
-     main = "distribution of Raw Counts for Sample 1", 
+     main = "distribution of Raw Counts for Sample 9 (Zeta)", 
      xlab = "counts", 
      col = "purple", 
      breaks = 50)
@@ -63,3 +63,15 @@ heatmap.2(as.matrix(filtered_counts),
           density.info = "none",
           main = "Heatmap of top differentially expressed genes in Sickle Cell Disease",
           cexRow = 0.9, cexCol = 0.7, margins = c(11,10))
+
+
+install.packages("ggplot2")  # Install ggplot2 if not already done
+library(ggplot2)
+
+
+ggplot(log_scd_data, aes(x = log2FC, y = -log10(pvalue))) +
+  geom_point(alpha = 0.5) +
+  theme_minimal() +
+  xlab("Log2 Fold Change") +
+  ylab("-Log10 P-value") +
+  ggtitle("Volcano Plot")
