@@ -19,7 +19,7 @@ boxplot(glio_data, xlab = "samples", ylab = "counts", las = 2, col = "lightblue"
 hist(glio_data[, "TCGA.19.4065.02A.11R.2005.01"], 
      main = "distribution of Raw Counts for Sample 1", 
      xlab = "counts", 
-     col = "lightgreen", 
+     col = "lightgreen",
      breaks = 50)
 
 
@@ -27,7 +27,7 @@ hist(glio_data[, "TCGA.19.4065.02A.11R.2005.01"],
 # Normalization of Data
 # using log transformation
 log_glio_data <- log2(glio_data + 1)
-boxplot(log_glio_data, xlab = "samples", ylab = "counts", las = 2, col = "lightblue") # las = 2 is to rotate the x-axis labels 
+boxplot(log_glio_data, xlab = "samples", ylab = "counts", las = 2, col = "lightblue", cex.axis = 0.7, cex.lab = 1.2) # las = 2 is to rotate the x-axis labels 
 hist(log_glio_data[, "TCGA.19.4065.02A.11R.2005.01"], 
      main = "distribution of Raw Counts for Sample 1", 
      xlab = "counts",
