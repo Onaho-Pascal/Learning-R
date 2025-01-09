@@ -1,9 +1,8 @@
-# first step is to set the working directory. That is, set the path from which R would read the desired file.
-getwd()
-setwd("C:/Users/user/Documents/Hackbio Internship Materials")
+
 
 # load the data into R and view the different sessions (Head, structure, dim, and check for missing values)
-glio_data <- read.csv(file = 'glioblastoma.csv', header = TRUE, row.names = 1)
+glio_data <- read.csv("C:/Users/user/Documents/Hackbio Internship Materials/glioblastoma.csv", header = TRUE, row.names = 1)
+View(glio_data)
 head(glio_data)
 str(glio_data)
 dim(glio_data)
@@ -11,6 +10,7 @@ any(is.na(glio_data))
 table(is.na(glio_data))
 
 library(gplots)
+library(ggplot2)
 library(RColorBrewer)
 div_color_palette <- rev(brewer.pal(11, "RdBu"))
 seq_color_palette <- brewer.pal(9, "Blues")
@@ -28,6 +28,8 @@ hist(glio_data[, "TCGA.19.4065.02A.11R.2005.01"],
 # using log transformation
 log_glio_data <- log2(glio_data + 1)
 boxplot(log_glio_data, xlab = "samples", ylab = "counts", las = 2, col = "lightblue", cex.axis = 0.7, cex.lab = 1.2) # las = 2 is to rotate the x-axis labels 
+#ggplot(log_glio_data, aes(x = colnames, y = row.names, las = 2, col = "lightblue", cex.axis = 0.7, cex.lab = 1.2)) + 
+  #geom_boxplot()
 hist(log_glio_data[, "TCGA.19.4065.02A.11R.2005.01"], 
      main = "distribution of Raw Counts for Sample 1", 
      xlab = "counts",
