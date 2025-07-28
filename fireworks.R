@@ -47,3 +47,4 @@ ggplot() + theme(panel.background = element_rect(fill = '#252525', colour = '#25
   geom_point(aes(x = x2, y = y2), data = rocket4, shape = 4, colour = '#addd8e')+
   geom_curve(aes(x = x1, y = y1, xend = x2, yend = y2 ), curvature = 0.1, data = rocket4, colour = '#addd8e') +
   geom_curve(aes(x = 0, y = -7, xend = r4_center[1], yend = r4_center[2] ), curvature = -0.2, colour = '#878787')
+
